@@ -1,0 +1,32 @@
+// font
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+// styles
+.nav-container {
+  z-index: 9999999;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #dddddd;
+  width: 100%;
+  @media screen and(max-width:'394px') {
+    font-size: 0.9rem;
+    li {
+      padding: 10px !important;
+    }
+  }
+  ul {
+    display: flex;
+    li {
+      padding: 15px;
+      a {
+        color: #3f3f3f;
+        transition: all 0.2s;
+        &:hover {
+          color: #0045bb;
+          transition: all 0.2s;
+        }
+      }
+    }
+  }
+}

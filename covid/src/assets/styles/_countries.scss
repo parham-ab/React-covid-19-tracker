@@ -1,0 +1,22 @@
+.countries-container {
+  .guide-container {
+    background-color: #7fa3da;
+    color: #fff;
+    font-weight: bold;
+    padding: 20px 0;
+    margin: 100px 30px;
+    border-radius: 10px;
+    ul {
+      display: flex;
+      li {
+        margin: auto;
+      }
+    }
+  }
+  @media screen and(max-width:'490px') {
+    .guide-container {
+      font-size: 0.7rem !important;
+      font-weight: normal;
+    }
+  }
+}
