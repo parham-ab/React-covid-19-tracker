@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 // react-google-charts
 import { Chart } from "react-google-charts";
+import { getCountryStatics } from "../services/fetcher";
 import Loading from "./Loading";
 
 const CovidWorldWide = () => {
   const [worlWide, setWorlWide] = useState([]);
   // fetch data function
   useEffect(() => {
-    const BASE_URL = "https://disease.sh/v3/covid-19/all";
-    axios.get(BASE_URL).then((response) => setWorlWide(response.data));
+    const fetchAPI = async () => {
+      try {
+        const { data } = await getCountryStatics();
+        setWorlWide(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAPI();
   }, []);
 
   const data = [
