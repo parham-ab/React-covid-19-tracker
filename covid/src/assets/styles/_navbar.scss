@@ -4,8 +4,13 @@
   position: relative;
   font-weight: bold;
   font-size: 1.2rem;
-  background-color: #dddddd;
+  background-color: #7878785c;
+  position: fixed;
+  top: 0;
   width: 100%;
+  a {
+    color: #fff !important;
+  }
   @media screen and(max-width:'394px') {
     font-size: 0.9rem;
     li {
