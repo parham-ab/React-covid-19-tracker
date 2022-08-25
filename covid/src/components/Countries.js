@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { v4 } from "uuid";
 // API
-import { GetCountriesData } from "../services/api";
+import { getAllCountriesList } from "../services/fetcher";
 // components
 import AllCountries from "./AllCountries";
 import Loading from "./Loading";
@@ -11,7 +11,12 @@ const Countries = () => {
 
   useEffect(() => {
     const fetchAPI = async () => {
-      setCountries(await GetCountriesData());
+      try {
+        const { data } = await getAllCountriesList();
+        setCountries(data);
+      } catch (error) {
+        console.log("Something went wrong");
+      }
     };
     fetchAPI();
   }, []);
