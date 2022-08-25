@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // components
 import Loading from "./Loading";
 import { getSingleCountry } from "../services/fetcher";
@@ -14,7 +16,16 @@ const CountryDetails = () => {
         const { data } = await getSingleCountry(id);
         setCountryDetails(data);
       } catch (error) {
-        console.log(error);
+        toast.error("Something went wrong", {
+          position: "bottom-left",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
     };
     fetchAPI();
@@ -141,6 +152,7 @@ const CountryDetails = () => {
         <li></li>
         <li></li>
       </ul>
+      <ToastContainer />
     </div>
   );
 };

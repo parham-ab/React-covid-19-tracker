@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // react-google-charts
 import { Chart } from "react-google-charts";
 import { getCountryStatics } from "../services/fetcher";
@@ -13,7 +15,16 @@ const CovidWorldWide = () => {
         const { data } = await getCountryStatics();
         setWorlWide(data);
       } catch (error) {
-        console.log(error);
+        toast.error("Something went wrong", {
+          position: "bottom-left",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
     };
     fetchAPI();
@@ -50,6 +61,7 @@ const CovidWorldWide = () => {
       ) : (
         <Loading />
       )}
+      <ToastContainer />
     </div>
   );
 };

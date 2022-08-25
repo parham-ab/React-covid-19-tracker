@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { v4 } from "uuid";
 // API
 import { getAllCountriesList } from "../services/fetcher";
@@ -15,7 +17,16 @@ const Countries = () => {
         const { data } = await getAllCountriesList();
         setCountries(data);
       } catch (error) {
-        console.log("Something went wrong");
+        toast.error("Something went wrong", {
+          position: "bottom-left",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
     };
     fetchAPI();
@@ -41,6 +52,7 @@ const Countries = () => {
       ) : (
         <Loading />
       )}
+      <ToastContainer />
     </div>
   );
 };
