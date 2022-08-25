@@ -3,18 +3,20 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 // components
 import Loading from "./Loading";
+import { getSingleCountry } from "../services/fetcher";
 
 const CountryDetails = () => {
   const [countrydetails, setCountryDetails] = useState([]);
   const id = useParams().id;
-  const GetCountryDetails = async () => {
-    const BASE_URL = `https://disease.sh/v3/covid-19/countries/${id}`;
-    const result = await axios.get(BASE_URL);
-    return result.data;
-  };
+
   useEffect(() => {
     const fetchAPI = async () => {
-      setCountryDetails(await GetCountryDetails());
+      try {
+        const { data } = await getSingleCountry(id);
+        setCountryDetails(data);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchAPI();
   }, []);
